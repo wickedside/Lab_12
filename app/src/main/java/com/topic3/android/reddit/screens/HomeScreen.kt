@@ -111,6 +111,25 @@ fun HomeScreen(
     }
 }
 
+private fun mapHomeScreenItems(
+    posts: List<PostModel>
+): List<HomeScreenItem> {
+    val homeScreenItems = mutableListOf<HomeScreenItem>()
+
+    // Add Trending item
+    homeScreenItems.add(
+        HomeScreenItem(HomeScreenItemType.TRENDING)
+    )
+
+    // Add Post items
+    posts.forEach { post ->
+        homeScreenItems.add(
+            HomeScreenItem(HomeScreenItemType.POST, post)
+        )
+    }
+    return homeScreenItems
+}
+
 @Composable
 private fun TrendingTopics(
     trendingTopics: List<TrendingTopicModel>,
